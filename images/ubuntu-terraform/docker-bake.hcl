@@ -14,6 +14,14 @@ variable "TAG" {
   default = "latest"
 }
 
+variable "BASE_IMAGE" {
+  default = "ubuntu"
+}
+
+variable "BASE_VERSION" {
+  default = "latest"
+}
+
 group "default" {
   targets = ["build"]
 }
@@ -56,5 +64,7 @@ target "push" {
   tags = [
     "public.ecr.aws/${OWNER}/${GROUP}/${FILE}",
     "public.ecr.aws/${OWNER}/${GROUP}/${FILE}:${TAG}",
+    "public.ecr.aws/${OWNER}/${GROUP}/${FILE}:${BASE_VERSION}",
+    "public.ecr.aws/${OWNER}/${GROUP}/${FILE}:${TAG}-${BASE_VERSION}",
   ]
 }

@@ -1,6 +1,6 @@
 # ubuntu-terraform
 
-![Build status](https://github.com/opslabhqx/docker-images/actions/workflows/build-push-ubuntu-terraform.yml/badge.svg)
+![Build status](https://github.com/opslabhqx/devcontainer/actions/workflows/build-push-ubuntu-terraform.yml/badge.svg)
 ![Licence: MIT](https://img.shields.io/github/license/opslabhqx/devcontainer)
 
 ## Description
@@ -22,8 +22,10 @@
 The Docker image is tagged as follows:
 
 ```
-"${OWNER}/${FILE}"
-"${OWNER}/${FILE}:${TAG}"
+${OWNER}/${GROUP}/${FILE}",
+${OWNER}/${GROUP}/${FILE}:${TAG}",
+${OWNER}/${GROUP}/${FILE}:${BASE_VERSION}",
+${OWNER}/${GROUP}/${FILE}:${TAG}-${BASE_VERSION}",
 ```
 
 ## Usage
