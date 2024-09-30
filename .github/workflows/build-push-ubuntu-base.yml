@@ -1,0 +1,60 @@
+---
+name: build-push ubuntu-base
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'images/ubuntu-base/**'
+  workflow_dispatch:
+
+env:
+  AWS_REGION: us-east-1
+  OWNER: opslabhq
+  GROUP: devcontainer
+  FILE: ubuntu-base
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build-push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@d632683dd7b4114ad314bca15554477dd762a938 # v4.2.0
+        with:
+          show-progress: false
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@49b3bc8e6bdd4a60e6116a5414239cba5943d3cf # v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@988b5a0280414f521da01fcc63a27aeeb4b104db # v3
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@e3dd6a429d7300a6a4c196c26e071d42e0343502 # v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN_ECR_PUBLIC }}
+          role-session-name: "GitHubActions-${{ github.event.repository.owner.login }}-${{ github.event.repository.name }}-${{ github.run_id }}"
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@062b18b96a7aff071d4dc91bc00c4c1a7945b076 # v2
+        with:
+          registry-type: public
+
+      - name: Extract version from Dockerfile
+        id: extract_version
+        run: |
+          TAG=$(sed -n 's/^ARG BASE_VERSION=\([a-zA-Z]*\)\(@.*\)\?$/\1/p' ./images/ubuntu-base/Dockerfile)
+          echo "TAG=${TAG}" >> $GITHUB_ENV
+          echo "TAG=${TAG}"
+
+      - name: Push
+        uses: docker/bake-action@e626c7390c9f95508a135a89e65ec698e061fb2a # v5
+        with:
+          targets: push
+          workdir: ./images/ubuntu-base

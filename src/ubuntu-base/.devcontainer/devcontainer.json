@@ -1,0 +1,16 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/opslabhqx/devcontainer/tree/main/src/ubuntu-base
+{
+    "name": "ubuntu-base",
+    "build": {
+        "dockerfile": "Dockerfile"
+      },
+    "customizations": {
+    "vscode": {
+        "extensions": []
+    },
+    "remoteUser": "default",
+    "containerUser": "default",
+    "privileged": false
+    }
+}
