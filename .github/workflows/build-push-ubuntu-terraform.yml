@@ -53,7 +53,7 @@ jobs:
           echo "BASE_VERSION=${BASE_VERSION}" >> $GITHUB_ENV
           echo "BASE_VERSION=${BASE_VERSION}"
 
-          TAG=$(sed -n 's/^ARG IMAGE_VERSION=v\?\([0-9.]*\).*/\1/p' ./ci/terraform/Dockerfile)
+          TAG=$(sed -n 's/^ARG IMAGE_VERSION=v\?\([0-9.]*\).*/\1/p' ./images/terraform/Dockerfile)
           echo "TAG=${TAG#v}" >> $GITHUB_ENV
           echo "TAG=${TAG#v}"
 
