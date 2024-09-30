@@ -1,6 +1,6 @@
 # ubuntu-base
 
-![Build status](https://github.com/opslabhqx/docker-images/actions/workflows/build-push-ubuntu-base.yml/badge.svg)
+![Build status](https://github.com/opslabhqx/devcontainer/actions/workflows/build-push-ubuntu-base.yml/badge.svg)
 ![Licence: MIT](https://img.shields.io/github/license/opslabhqx/devcontainer)
 
 ## Description

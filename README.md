@@ -1,4 +1,4 @@
-# opslabhq devcontainers
+# opslabhq devcontainer
 
 ```bash
 devcontainer templates apply --workspace-folder . \
