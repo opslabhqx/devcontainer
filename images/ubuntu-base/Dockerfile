@@ -74,3 +74,8 @@ RUN touch ~/.zshrc \
     && echo "setopt SHARE_HISTORY" >> ~/.zshrc \
     && touch ~/.zsh_history \
     && chmod 600 ~/.zsh_history
+
+ENV BASH_ENV=/usr/local/etc/env \
+    ENV=/usr/local/etc/env
+
+SHELL ["/bin/bash" , "-c"]
