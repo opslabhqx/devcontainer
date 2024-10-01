@@ -18,9 +18,12 @@ RUN case `uname -m` in \
     && echo $ARCH > /tmp/ARCH \
     && cat /tmp/ARCH
 
+RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+    && apt-get install -y --no-install-recommends make jq
+
 FROM base AS build
 
-RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get install -y --no-install-recommends wget unzip
 
 # renovate: datasource=github-releases depName=hashicorp/terraform
