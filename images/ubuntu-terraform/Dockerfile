@@ -3,7 +3,7 @@
 # renovate: datasource=docker depName=opslabhq/devcontainer/ubuntu-base
 ARG BASE_VERSION=jammy
 
-FROM public.ecr.aws/opslabhq/devcontainer/ubuntu-base:${BASE_VERSION} AS base
+FROM public.ecr.aws/opslabhq/devcontainer/ubuntu-base:${BASE_VERSION:-latest} AS base
 
 LABEL maintainer="Anthony Yung <yhs88a@gmail.com>" \
     org.opencontainers.image.source="https://github.com/opslabhqx/docker-images"
@@ -53,7 +53,7 @@ COPY --from=build /usr/local/bin/* /usr/local/bin/
 
 RUN chmod +x /usr/local/bin/*
 
-ARG USER=default
+ARG USER=vscode
 ENV HOME=/home/$USER
 
 USER $USER

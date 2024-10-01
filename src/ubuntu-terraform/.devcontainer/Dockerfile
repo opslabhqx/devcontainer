@@ -3,8 +3,8 @@
 # renovate: datasource=docker depName=opslabhq/devcontainer/ubuntu-terraform
 ARG VARIANT=1.9.6
 
-FROM public.ecr.aws/opslabhq/devcontainer/ubuntu-terraform:${VARIANT}
+FROM public.ecr.aws/opslabhq/devcontainer/ubuntu-terraform:${VARIANT:-latest}
 
 # [Optional] Uncomment this section to install additional OS packages.
-# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-#     && apt-get install -y --no-install-recommends <your-package-list-here>
+# RUN $(which sudo) apt-get update && export DEBIAN_FRONTEND=noninteractive \
+#     && $(which sudo) apt-get install -y --no-install-recommends <your-package-list-here>

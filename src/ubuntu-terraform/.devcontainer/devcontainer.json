@@ -9,8 +9,8 @@
     "vscode": {
         "extensions": ["HashiCorp.terraform", "HashiCorp.HCL"]
     },
-    "remoteUser": "default",
-    "containerUser": "default",
+    "remoteUser": "vscode",
+    "containerUser": "vscode",
     "privileged": false
     }
 }

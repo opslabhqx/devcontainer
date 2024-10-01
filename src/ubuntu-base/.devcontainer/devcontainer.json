@@ -9,8 +9,8 @@
     "vscode": {
         "extensions": []
     },
-    "remoteUser": "default",
-    "containerUser": "default",
+    "remoteUser": "vscode",
+    "containerUser": "vscode",
     "privileged": false
     }
 }
