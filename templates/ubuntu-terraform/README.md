@@ -9,4 +9,4 @@ A simple Ubuntu Base container with Terraform and other common utilities install
 
 ---
 
-_Note: This file was auto-generated from the [devcontainer-template.json](https://github.com/opslabhqx/devcontainer/blob/main/src/ubuntu-terraform/devcontainer-template.json).  Add additional notes to a `NOTES.md`._
+_Note: This file was auto-generated from the [devcontainer-template.json](https://github.com/opslabhqx/devcontainer/blob/main/templates/ubuntu-terraform/devcontainer-template.json).  Add additional notes to a `NOTES.md`._
