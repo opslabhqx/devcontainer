@@ -1,8 +1,5 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/opslabhqx/devcontainer/tree/main/src/ubuntu-base
-// "workspaceMount": "source=${localWorkspaceFolder}/,target=/home/default/ubuntu-base,type=bind,consistency=cached",
-// "workspaceFolder": "/home/default/ubuntu-base",
-// "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}"
 {
   "name": "ubuntu-base",
   "build": {
@@ -16,8 +13,11 @@
       "extensions": []
       }
   },
+  // "workspaceMount": "source=${localWorkspaceFolder}/,target=/home/default/ubuntu-base,type=bind,consistency=cached",
+  // "workspaceFolder": "/home/default/ubuntu-base",
   "containerUser": "default",
   "remoteUser": "default",
   "updateRemoteUserUID": true,
   "privileged": false
+  // "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}"
 }

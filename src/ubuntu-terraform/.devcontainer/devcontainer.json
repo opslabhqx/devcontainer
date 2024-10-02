@@ -1,8 +1,5 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/opslabhqx/devcontainer/tree/main/src/ubuntu-terraform
-// "workspaceMount": "source=${localWorkspaceFolder}/,target=/home/default/ubuntu-terraform,type=bind,consistency=cached",
-// "workspaceFolder": "/home/default/ubuntu-terraform",
-// "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}"
 {
   "name": "ubuntu-terraform",
   "build": {
@@ -16,8 +13,11 @@
       "extensions": ["HashiCorp.terraform", "HashiCorp.HCL"]
       }
   },
+  // "workspaceMount": "source=${localWorkspaceFolder}/,target=/home/default/ubuntu-terraform,type=bind,consistency=cached",
+  // "workspaceFolder": "/home/default/ubuntu-terraform",
   "containerUser": "default",
   "remoteUser": "default",
   "updateRemoteUserUID": true,
   "privileged": false
+  // "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}"
 }
