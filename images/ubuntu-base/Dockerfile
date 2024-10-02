@@ -39,10 +39,11 @@ RUN ln -fs /usr/local/aws-cli/v2/current/bin/aws /usr/local/bin/aws \
 
 RUN chmod +x /usr/local/bin/*
 
-ARG USER=vscode
+ARG USER=default
 ARG USER_ID=1000
 ARG PRIMARY_GROUP_ID=1000
-ENV HOME=/home/$USER
+ENV HOME=/home/$USER \
+    SHELL=/bin/bash
 
 RUN addgroup --gid $PRIMARY_GROUP_ID $USER \
     && adduser --system --uid $USER_ID --ingroup $USER $USER \
@@ -74,8 +75,3 @@ RUN touch ~/.zshrc \
     && echo "setopt SHARE_HISTORY" >> ~/.zshrc \
     && touch ~/.zsh_history \
     && chmod 600 ~/.zsh_history
-
-ENV BASH_ENV=/usr/local/etc/env \
-    ENV=/usr/local/etc/env
-
-SHELL ["/bin/bash" , "-c"]

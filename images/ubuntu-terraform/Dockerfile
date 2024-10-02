@@ -56,7 +56,7 @@ COPY --from=build /usr/local/bin/* /usr/local/bin/
 
 RUN chmod +x /usr/local/bin/*
 
-ARG USER=vscode
+ARG USER=default
 ENV HOME=/home/$USER
 
 USER $USER
