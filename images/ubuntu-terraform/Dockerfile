@@ -52,9 +52,12 @@ RUN export ARCH=$(cat /tmp/ARCH | sed 's/_/-/g') \
 
 FROM base AS final
 
-COPY --from=build /usr/local/bin/* /usr/local/bin/
+COPY --from=build /usr/local/bin/terraform /usr/local/bin/
+COPY --from=build /usr/local/bin/terragrunt /usr/local/bin/
+COPY --from=build /usr/local/bin/terraform-docs /usr/local/bin/
 
-RUN chmod +x /usr/local/bin/*
+RUN chmod +x /usr/local/bin/* \
+    && chown root:root /usr/local/bin/*
 
 ARG USER=default
 ENV HOME=/home/$USER

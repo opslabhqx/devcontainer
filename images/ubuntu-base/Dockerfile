@@ -19,6 +19,8 @@ RUN case `uname -m` in \
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get install -y --no-install-recommends sudo git curl ca-certificates zsh nano
 
+RUN git config --system --add safe.directory '*'
+
 FROM base AS build
 
 RUN export DEBIAN_FRONTEND=noninteractive \
@@ -37,7 +39,8 @@ RUN ln -fs /usr/local/aws-cli/v2/current/bin/aws /usr/local/bin/aws \
     && ln -fs /usr/local/aws-cli/v2/current/bin/aws_completer /usr/local/bin/aws_completer \
     && ln -fs $(which aws) /usr/local/bin/aws-cli
 
-RUN chmod +x /usr/local/bin/*
+RUN chmod +x /usr/local/bin/* \
+    && chown root:root /usr/local/bin/*
 
 ARG USER=default
 ARG USER_ID=1000
