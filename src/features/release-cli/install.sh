@@ -14,10 +14,10 @@ function check() {
 }
 
 function define_apt() {
-    local commands="$@"
+    local commands=("$@")
     echo "Updating package list..."
     $(which sudo) apt-get update
-    for cmd in $commands; do
+    for cmd in "${commands[@]}"; do
         if command -v "$cmd" >/dev/null 2>&1; then
             echo "$cmd is already installed."
         else

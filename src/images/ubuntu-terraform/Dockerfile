@@ -59,7 +59,7 @@ COPY --from=build /usr/local/bin/terraform-docs /usr/local/bin/
 RUN chmod +x /usr/local/bin/* \
     && chown root:root /usr/local/bin/*
 
-ARG USER=default
+ARG USER=vscode
 ENV HOME=/home/$USER
 
 USER $USER

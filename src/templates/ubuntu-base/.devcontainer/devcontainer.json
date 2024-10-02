@@ -6,7 +6,7 @@
     "./docker-compose.devcontainer.yml"
   ],
   "service": "ubuntu-base",
-  "remoteUser": "default",
+  "remoteUser": "vscode",
   "shutdownAction": "stopCompose",
   "customizations": {
     "vscode": {
@@ -16,5 +16,5 @@
     "extensions": []
     }
   },
-  "workspaceFolder": "/home/default/ubuntu-base"
+  "workspaceFolder": "/home/vscode/ubuntu-base"
 }

@@ -42,7 +42,7 @@ RUN ln -fs /usr/local/aws-cli/v2/current/bin/aws /usr/local/bin/aws \
 RUN chmod +x /usr/local/bin/* \
     && chown root:root /usr/local/bin/*
 
-ARG USER=default
+ARG USER=vscode
 ARG USER_ID=1000
 ARG PRIMARY_GROUP_ID=1000
 ENV HOME=/home/$USER \

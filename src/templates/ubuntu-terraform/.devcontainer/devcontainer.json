@@ -6,7 +6,7 @@
     "./docker-compose.devcontainer.yml"
   ],
   "service": "ubuntu-terraform",
-  "remoteUser": "default",
+  "remoteUser": "vscode",
   "shutdownAction": "stopCompose",
   "customizations": {
     "vscode": {
@@ -16,5 +16,5 @@
     "extensions": ["HashiCorp.terraform", "HashiCorp.HCL"]
     }
   },
-  "workspaceFolder": "/home/default/ubuntu-terraform"
+  "workspaceFolder": "/home/vscode/ubuntu-terraform"
 }
