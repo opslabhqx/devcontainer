@@ -1,0 +1,7 @@
+{
+    "id": "gitlab-release",
+    "version": "1.0.0",
+    "name": "release-cli",
+    "documentationURL": "https://gitlab.com/gitlab-org/release-cli/-/tree/master/docs",
+    "description": "Installs the release-cli from GitLab."
+}

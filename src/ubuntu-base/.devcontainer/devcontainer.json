@@ -2,22 +2,19 @@
 // README at: https://github.com/opslabhqx/devcontainer/tree/main/src/ubuntu-base
 {
   "name": "ubuntu-base",
-  "build": {
-      "dockerfile": "Dockerfile"
-    },
-    "customizations": {
-      "vscode": {
-        "settings": {
-          "terminal.integrated.defaultProfile.linux": "zsh"
-        },
-      "extensions": []
-      }
-  },
-  // "workspaceMount": "source=${localWorkspaceFolder}/,target=/home/default/ubuntu-base,type=bind,consistency=cached",
-  // "workspaceFolder": "/home/default/ubuntu-base",
-  "containerUser": "default",
+  "dockerComposeFile": [
+    "./docker-compose.devcontainer.yml"
+  ],
+  "service": "ubuntu-base",
   "remoteUser": "default",
-  "updateRemoteUserUID": true,
-  "privileged": false
-  // "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}"
+  "shutdownAction": "stopCompose",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh"
+      },
+    "extensions": []
+    }
+  },
+  "workspaceFolder": "/home/default/ubuntu-base"
 }

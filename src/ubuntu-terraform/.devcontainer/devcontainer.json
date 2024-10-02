@@ -2,22 +2,19 @@
 // README at: https://github.com/opslabhqx/devcontainer/tree/main/src/ubuntu-terraform
 {
   "name": "ubuntu-terraform",
-  "build": {
-      "dockerfile": "Dockerfile"
-    },
-    "customizations": {
-      "vscode": {
-        "settings": {
-          "terminal.integrated.defaultProfile.linux": "zsh"
-        },
-      "extensions": ["HashiCorp.terraform", "HashiCorp.HCL"]
-      }
-  },
-  // "workspaceMount": "source=${localWorkspaceFolder}/,target=/home/default/ubuntu-terraform,type=bind,consistency=cached",
-  // "workspaceFolder": "/home/default/ubuntu-terraform",
-  "containerUser": "default",
+  "dockerComposeFile": [
+    "./docker-compose.devcontainer.yml"
+  ],
+  "service": "ubuntu-terraform",
   "remoteUser": "default",
-  "updateRemoteUserUID": true,
-  "privileged": false
-  // "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}"
+  "shutdownAction": "stopCompose",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh"
+      },
+    "extensions": ["HashiCorp.terraform", "HashiCorp.HCL"]
+    }
+  },
+  "workspaceFolder": "/home/default/ubuntu-terraform"
 }
