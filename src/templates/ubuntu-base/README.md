@@ -9,4 +9,4 @@ A simple Ubuntu Base container with Git and other common utilities installed.
 
 ---
 
-_Note: This file was auto-generated from the [devcontainer-template.json](https://github.com/opslabhqx/devcontainer/blob/main/templates/ubuntu-base/devcontainer-template.json).  Add additional notes to a `NOTES.md`._
+_Note: This file was auto-generated from the [devcontainer-template.json](https://github.com/opslabhqx/devcontainer/blob/main/src/templates/ubuntu-base/devcontainer-template.json).  Add additional notes to a `NOTES.md`._
