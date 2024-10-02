@@ -6,7 +6,7 @@ on:
     branches:
       - main
     paths:
-      - 'images/ubuntu-terraform/**'
+      - 'src/images/ubuntu-terraform/**'
   workflow_dispatch:
 
 env:
@@ -49,11 +49,11 @@ jobs:
       - name: Extract version from Dockerfile
         id: extract_version
         run: |
-          BASE_VERSION=$(sed -n 's/^ARG BASE_VERSION=\([a-zA-Z]*\)\(@.*\)\?$/\1/p' ./images/ubuntu-terraform/Dockerfile)
+          BASE_VERSION=$(sed -n 's/^ARG BASE_VERSION=\([a-zA-Z]*\)\(@.*\)\?$/\1/p' ./src/images/ubuntu-terraform/Dockerfile)
           echo "BASE_VERSION=${BASE_VERSION}" >> $GITHUB_ENV
           echo "BASE_VERSION=${BASE_VERSION}"
 
-          TAG=$(sed -n 's/^ARG IMAGE_VERSION=v\?\([0-9.]*\).*/\1/p' ./images/ubuntu-terraform/Dockerfile)
+          TAG=$(sed -n 's/^ARG IMAGE_VERSION=v\?\([0-9.]*\).*/\1/p' ./src/images/ubuntu-terraform/Dockerfile)
           echo "TAG=${TAG#v}" >> $GITHUB_ENV
           echo "TAG=${TAG#v}"
 
@@ -61,4 +61,4 @@ jobs:
         uses: docker/bake-action@e626c7390c9f95508a135a89e65ec698e061fb2a # v5
         with:
           targets: push
-          workdir: ./images/ubuntu-terraform
+          workdir: ./src/images/ubuntu-terraform

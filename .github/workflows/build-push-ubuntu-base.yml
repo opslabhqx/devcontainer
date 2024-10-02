@@ -47,7 +47,7 @@ jobs:
       - name: Extract version from Dockerfile
         id: extract_version
         run: |
-          TAG=$(sed -n 's/^ARG BASE_VERSION=\([a-zA-Z]*\)\(@.*\)\?$/\1/p' ./images/ubuntu-base/Dockerfile)
+          TAG=$(sed -n 's/^ARG BASE_VERSION=\([a-zA-Z]*\)\(@.*\)\?$/\1/p' ./src/images/ubuntu-base/Dockerfile)
           echo "TAG=${TAG}" >> $GITHUB_ENV
           echo "TAG=${TAG}"
 
@@ -55,4 +55,4 @@ jobs:
         uses: docker/bake-action@e626c7390c9f95508a135a89e65ec698e061fb2a # v5
         with:
           targets: push
-          workdir: ./images/ubuntu-base
+          workdir: ./src/images/ubuntu-base
