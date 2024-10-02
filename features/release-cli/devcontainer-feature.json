@@ -1,5 +1,5 @@
 {
-    "id": "gitlab-release",
+    "id": "release-cli",
     "version": "1.0.0",
     "name": "release-cli",
     "documentationURL": "https://gitlab.com/gitlab-org/release-cli/-/tree/master/docs",
