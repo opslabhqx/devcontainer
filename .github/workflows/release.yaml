@@ -18,9 +18,17 @@ jobs:
         uses: devcontainers/action@v1
         with:
           publish-templates: "true"
-          base-path-to-templates: "./src"
+          base-path-to-templates: "./templates"
           generate-docs: "true"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_SECRET }}
 
+      - name: "Publish Features"
+        uses: devcontainers/action@v1
+        with:
+          publish-features: "true"
+          base-path-to-features: "./features"
+          generate-docs: "true"
         env:
           GITHUB_TOKEN: ${{ secrets.GH_SECRET }}
 

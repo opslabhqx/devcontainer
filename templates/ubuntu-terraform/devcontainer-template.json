@@ -1,6 +1,6 @@
 {
     "id": "ubuntu-terraform",
-    "version": "1.2.2",
+    "version": "1.2.3",
     "name": "ubuntu-terraform",
     "description": "A simple Ubuntu Base container with Terraform and other common utilities installed.",
     "documentationURL": "https://github.com/opslabhqx/devcontainer/tree/main/src/ubuntu-terraform",
