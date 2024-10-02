@@ -135,6 +135,7 @@ exec "$@"
 EOF
     sudo chmod +x /usr/local/share/docker-init.sh
     sudo chown "${USERNAME}":root /usr/local/share/docker-init.sh
+    sudo usermod -aG docker "${USERNAME}"
 }
 
 function main() {
