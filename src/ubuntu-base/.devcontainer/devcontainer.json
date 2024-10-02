@@ -18,6 +18,6 @@
   "containerUser": "default",
   "remoteUser": "default",
   "updateRemoteUserUID": true,
-  "privileged": false,
+  "privileged": false
   // "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}"
 }
