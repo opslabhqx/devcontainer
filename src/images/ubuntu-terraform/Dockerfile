@@ -8,8 +8,6 @@ FROM public.ecr.aws/opslabhq/devcontainer/ubuntu-base:${BASE_VERSION:-latest} AS
 LABEL maintainer="Anthony Yung <yhs88a@gmail.com>" \
     org.opencontainers.image.source="https://github.com/opslabhqx/docker-images"
 
-USER root
-
 RUN case `uname -m` in \
     x86_64) ARCH=linux_amd64; ;; \
     aarch64) ARCH=linux_arm64; ;; \
@@ -60,7 +58,6 @@ RUN chmod +x /usr/local/bin/* \
     && chown root:root /usr/local/bin/*
 
 ARG USER=vscode
-ENV HOME=/home/$USER
 
 USER $USER
-WORKDIR $HOME
+WORKDIR /home/$USER

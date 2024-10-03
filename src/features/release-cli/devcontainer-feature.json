@@ -1,7 +1,8 @@
 {
     "id": "release-cli",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "name": "release-cli",
-    "documentationURL": "https://github.com/opslabhqx/devcontainer/blob/main/src/features/release-cli/README.m",
+    "documentationURL": "https://github.com/opslabhqx/devcontainer/blob/main/src/features/release-cli/README.md",
+    "licenseURL": "https://github.com/opslabhqx/devcontainer/blob/main/LICENSE",
     "description": "Installs the release-cli from GitLab."
 }
