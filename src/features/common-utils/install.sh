@@ -58,6 +58,7 @@ function setup_files() {
     fi
 
     if type ssh > /dev/null 2>&1; then
+        mkdir -p "${HOME}"/.ssh
         cat "${FEATURE_DIR}/files/config" >> "${HOME}"/.ssh/config
         sudo chown "${USER}":"${USER}" "${HOME}"/.ssh/config
         sudo chmod 644 "${HOME}"/.ssh/config
