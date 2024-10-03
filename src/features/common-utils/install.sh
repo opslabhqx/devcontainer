@@ -47,9 +47,7 @@ install_debian_packages() {
         zsh"
     fi
 
-    echo "Packages to verify are installed: ${package_list}"
-    rm -rf /var/lib/apt/lists/*
-    apt-get update -y
+    apt-get update -y || { echo "apt-get update failed"; exit 1; }
     apt-get install -y --no-install-recommends "${package_list}" 2> >( grep -v 'debconf: delaying package configuration, since apt-utils is not installed' >&2 )
 
     apt-get upgrade -y --no-install-recommends

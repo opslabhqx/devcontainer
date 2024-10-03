@@ -11,7 +11,7 @@
   "customizations": {
     "vscode": {
       "settings": {
-        "terminal.integrated.defaultProfile.linux": "zsh"
+        "terminal.integrated.defaultProfile.linux": "bash" // default shell
       },
     "extensions": ["HashiCorp.terraform", "HashiCorp.HCL"]
     }
