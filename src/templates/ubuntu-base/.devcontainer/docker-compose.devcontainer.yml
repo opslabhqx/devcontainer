@@ -1,6 +1,6 @@
 ---
 services:
-  aws-terragrunt:
+  ubuntu-base:
     container_name: github-opslabhqx-devcontainer-ubuntu-base
     build:
       context: .
