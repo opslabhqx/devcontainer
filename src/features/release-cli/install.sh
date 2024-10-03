@@ -24,9 +24,12 @@ function define_apt() {
             echo "$cmd is not installed or detected. Installing..."
             export DEBIAN_FRONTEND=noninteractive
             $(which sudo) apt-get install -y --no-install-recommends "$cmd" || { echo "Error: Failed to install $cmd"; exit 1; }
-            installed_packages+=("$cmd")
         fi
     done
+    apt-get upgrade -y --no-install-recommends
+    apt-get autoremove -y
+    apt-get clean -y
+    rm -rf /var/lib/apt/lists/*
 }
 
 function install_release_cli() {

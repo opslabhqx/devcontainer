@@ -1,6 +1,6 @@
 {
     "id": "release-cli",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "name": "release-cli",
     "documentationURL": "https://github.com/opslabhqx/devcontainer/blob/main/src/features/release-cli/README.md",
     "licenseURL": "https://github.com/opslabhqx/devcontainer/blob/main/LICENSE",

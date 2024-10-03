@@ -1,6 +1,6 @@
 {
     "id": "common-utils",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "name": "common-utils",
     "documentationURL": "https://github.com/opslabhqx/devcontainer/blob/main/src/features/common-utils/README.md",
     "licenseURL": "https://github.com/opslabhqx/devcontainer/blob/main/LICENSE",
