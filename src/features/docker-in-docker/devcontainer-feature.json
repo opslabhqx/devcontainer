@@ -1,6 +1,6 @@
 {
     "id": "docker-in-docker",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "name": "docker-in-docker",
     "documentationURL": "https://github.com/opslabhqx/devcontainer/blob/main/src/features/docker-in-docker/README.md",
     "licenseURL": "https://github.com/opslabhqx/devcontainer/blob/main/LICENSE",

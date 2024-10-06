@@ -6,19 +6,17 @@ USERNAME="${USERNAME:-"${_REMOTE_USER:-"vscode"}"}"
 HOME="/home/${USERNAME}"
 FEATURE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-function define_apt() {
-    echo "Updating package list..."
+function install() {
     $(which sudo) apt-get update
     export DEBIAN_FRONTEND=noninteractive
     $(which sudo) apt-get install -y --no-install-recommends "$@"
-    apt-get upgrade -y --no-install-recommends
     apt-get autoremove -y
     apt-get clean -y
     rm -rf /var/lib/apt/lists/*
 }
 
-function check_apt() {
-    define_apt \
+function install_apt() {
+    install \
         apt-transport-https \
         apt-utils \
         bash-completion \
@@ -27,6 +25,8 @@ function check_apt() {
         ca-certificates \
         curl \
         git \
+        gpg \
+        gpg-agent \
         init-system-helpers \
         jq \
         less \
@@ -87,7 +87,7 @@ function setup_files() {
 }
 
 function main() {
-    check_apt
+    install_apt
     setup_files
 }
 

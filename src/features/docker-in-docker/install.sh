@@ -4,9 +4,10 @@ set -o errexit -o pipefail
 
 USERNAME="${USERNAME:-"${_REMOTE_USER:-"vscode"}"}"
 
-function install_docker_buildx() {
+function install_apt() {
     $(which sudo) apt-get update
-    $(which sudo) apt-get install -y sudo ca-certificates curl
+    export DEBIAN_FRONTEND=noninteractive
+    $(which sudo) apt-get install -y --no-install-recommends sudo ca-certificates curl
     sudo install -m 0755 -d /etc/apt/keyrings
     sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
     sudo chmod a+r /etc/apt/keyrings/docker.asc
@@ -15,10 +16,13 @@ function install_docker_buildx() {
     $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
     sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     sudo apt-get update
-    sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    sudo apt-get install -y --no-install-recommends docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    apt-get autoremove -y
+    apt-get clean -y
+    rm -rf /var/lib/apt/lists/*
 }
 
-function install_dockerd_start() {
+function setup_docker_init() {
     cat << 'EOF' > /usr/local/share/docker-init.sh
 #!/usr/bin/env bash
 
@@ -139,8 +143,8 @@ EOF
 }
 
 function main() {
-    install_docker_buildx
-    install_dockerd_start
+    install_apt
+    setup_docker_init
 }
 
 main
