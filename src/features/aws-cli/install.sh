@@ -15,7 +15,7 @@ function check() {
     esac
     $(which sudo) apt-get update
     export DEBIAN_FRONTEND=noninteractive
-    $(which sudo) apt-get install -y --no-install-recommends sudo curl ca-certificates gpg unzip
+    $(which sudo) apt-get install -y --no-install-recommends sudo curl ca-certificates gpg gpg-agent unzip
 }
 
 function install() {

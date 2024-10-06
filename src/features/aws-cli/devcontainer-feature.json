@@ -1,6 +1,6 @@
 {
     "id": "aws-cli",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "name": "aws-cli",
     "documentationURL": "https://github.com/opslabhqx/devcontainer/blob/main/src/features/aws-cli/README.md",
     "licenseURL": "https://github.com/opslabhqx/devcontainer/blob/main/LICENSE",
