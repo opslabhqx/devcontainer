@@ -4,7 +4,9 @@ name: build-push ubuntu-base
 on:
   push:
     branches:
-      - ubuntu-base
+      - main
+    paths:
+      - 'images/ubuntu-base/**'
   workflow_dispatch:
 
 env:
