@@ -3,22 +3,14 @@
 set -o errexit -o pipefail
 
 USERNAME="${USERNAME:-"${_REMOTE_USER:-"vscode"}"}"
-HOME=/home/"${USERNAME:-"${_REMOTE_USER:-"vscode"}"}"
+HOME="/home/${USERNAME}"
 FEATURE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 function define_apt() {
-    local commands=("$@")
     echo "Updating package list..."
     $(which sudo) apt-get update
-    for cmd in "${commands[@]}"; do
-        if command -v "$cmd" >/dev/null 2>&1; then
-            echo "$cmd is already installed."
-        else
-            echo "$cmd is not installed or detected. Installing..."
-            export DEBIAN_FRONTEND=noninteractive
-            $(which sudo) apt-get install -y --no-install-recommends "$cmd" || { echo "Error: Failed to install $cmd"; exit 1; }
-        fi
-    done
+    export DEBIAN_FRONTEND=noninteractive
+    $(which sudo) apt-get install -y --no-install-recommends "$@"
     apt-get upgrade -y --no-install-recommends
     apt-get autoremove -y
     apt-get clean -y
@@ -26,23 +18,52 @@ function define_apt() {
 }
 
 function check_apt() {
-    define_apt apt-transport-https apt-utils bash-completion bzip2 build-essential ca-certificates curl git init-system-helpers jq less lsb-release lsof make nano net-tools openssh-client procps psmisc rsync strace sudo tree unzip vim wget xz-utils zip zsh
+    define_apt \
+        apt-transport-https \
+        apt-utils \
+        bash-completion \
+        bzip2 \
+        build-essential \
+        ca-certificates \
+        curl \
+        git \
+        init-system-helpers \
+        jq \
+        less \
+        lsb-release \
+        lsof \
+        make \
+        nano \
+        net-tools \
+        openssh-client \
+        procps \
+        psmisc \
+        rsync \
+        strace \
+        sudo \
+        tree \
+        unzip \
+        vim \
+        wget \
+        xz-utils \
+        zip \
+        zsh
 }
 
 function setup_files() {
     if type bash > /dev/null 2>&1; then
         cat "${FEATURE_DIR}/files/.bashrc" >> "${HOME}"/.bashrc
-        sudo chown "${USER}":"${USER}" "${HOME}"/.bashrc
+        sudo chown "${USERNAME}":"${USERNAME}" "${HOME}"/.bashrc
         sudo chmod 644 "${HOME}"/.bashrc
         touch "${HOME}"/.bash_history
-        sudo chown "${USER}":"${USER}" "${HOME}"/.bash_history
+        sudo chown "${USERNAME}":"${USERNAME}" "${HOME}"/.bash_history
         sudo chmod 600 "${HOME}"/.bash_history
     fi
 
     if type git > /dev/null 2>&1; then
         sudo git config --system --add safe.directory '*'
         cat "${FEATURE_DIR}/files/.netrc" >> "${HOME}"/.netrc
-        sudo chown "${USER}":"${USER}" "${HOME}"/.netrc
+        sudo chown "${USERNAME}":"${USERNAME}" "${HOME}"/.netrc
         sudo chmod 644 "${HOME}"/.netrc
     fi
 
@@ -50,17 +71,17 @@ function setup_files() {
         git clone https://github.com/zsh-users/zsh-autosuggestions "${HOME}"/.zsh/zsh-autosuggestions
         git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${HOME}"/.zsh/zsh-syntax-highlighting
         cat "${FEATURE_DIR}/files/.zshrc" >> "${HOME}"/.zshrc
-        sudo chown "${USER}":"${USER}" "${HOME}"/.zshrc
+        sudo chown "${USERNAME}":"${USERNAME}" "${HOME}"/.zshrc
         sudo chmod 644 "${HOME}"/.zshrc
         touch "${HOME}"/.zsh_history
-        sudo chown "${USER}":"${USER}" "${HOME}"/.zsh_history
+        sudo chown "${USERNAME}":"${USERNAME}" "${HOME}"/.zsh_history
         sudo chmod 600 "${HOME}"/.zsh_history
     fi
 
     if type ssh > /dev/null 2>&1; then
         mkdir -p "${HOME}"/.ssh
         cat "${FEATURE_DIR}/files/config" >> "${HOME}"/.ssh/config
-        sudo chown "${USER}":"${USER}" "${HOME}"/.ssh/config
+        sudo chown "${USERNAME}":"${USERNAME}" "${HOME}"/.ssh/config
         sudo chmod 644 "${HOME}"/.ssh/config
     fi
 }

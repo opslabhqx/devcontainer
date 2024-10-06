@@ -1,0 +1,8 @@
+{
+    "id": "aws-cli",
+    "version": "1.0.0",
+    "name": "aws-cli",
+    "documentationURL": "https://github.com/opslabhqx/devcontainer/blob/main/src/features/aws-cli/README.md",
+    "licenseURL": "https://github.com/opslabhqx/devcontainer/blob/main/LICENSE",
+    "description": "Installs the aws-cli."
+}
