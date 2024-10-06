@@ -54,7 +54,7 @@ jobs:
           echo "TAG=${TAG}"
 
       - name: Push
-        uses: docker/bake-action@e626c7390c9f95508a135a89e65ec698e061fb2a # v5
+        uses: docker/bake-action@2e3d19baedb14545e5d41222653874f25d5b4dfb # v5
         with:
           targets: push
           workdir: ./src/images/ubuntu-base
