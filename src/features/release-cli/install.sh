@@ -2,6 +2,7 @@
 
 set -o errexit -o pipefail
 
+# renovate: datasource=gitlab-releases depName=gitlab-org/release-cli
 RELEASECLI_VERSION=v0.18.0
 
 function install_apt() {
