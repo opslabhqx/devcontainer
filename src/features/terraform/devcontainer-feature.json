@@ -1,6 +1,6 @@
 {
     "id": "terraform",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "name": "terraform",
     "documentationURL": "https://github.com/opslabhqx/devcontainer/blob/main/src/features/terraform/README.md",
     "licenseURL": "https://github.com/opslabhqx/devcontainer/blob/main/LICENSE",

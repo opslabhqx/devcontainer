@@ -52,7 +52,6 @@ function main() {
     install_terraform
     install_terragrunt
     install_terraform_docs
-    rm -rf /tmp/*
 }
 
 main
