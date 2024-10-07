@@ -17,7 +17,7 @@ RUN case `uname -m` in \
     && cat /tmp/ARCH
 
 # renovate: datasource=github-tags depName=nodejs/node
-ARG IMAGE_VERSION=v22.8.0
+ARG IMAGE_VERSION=v22.9.0
 
 RUN export ARCH=$(cat /tmp/ARCH) \
     && apt-get update && export DEBIAN_FRONTEND=noninteractive \
