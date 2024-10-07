@@ -9,7 +9,7 @@ LABEL maintainer="Anthony Yung <yhs88a@gmail.com>" \
     org.opencontainers.image.source="https://github.com/opslabhqx/docker-images"
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get install -y --no-install-recommends sudo passwd git curl ca-certificates
+    && apt-get install -y --no-install-recommends sudo git curl ca-certificates
 
 ARG USER=vscode
 ARG USER_ID=1000
@@ -18,7 +18,7 @@ ARG HOME=/home/$USER
 ENV HOME=/home/$USER \
     SHELL=/bin/bash
 
-RUN addgroup --gid $PRIMARY_GROUP_ID $USER \
+RUN groupadd --gid $PRIMARY_GROUP_ID $USER \
     && adduser --system --uid $USER_ID --ingroup $USER $USER \
     && echo "$USER ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$USER \
     && chmod 0440 /etc/sudoers.d/$USER \
