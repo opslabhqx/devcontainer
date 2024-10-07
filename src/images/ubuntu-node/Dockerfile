@@ -28,7 +28,7 @@ ENV HOME=/home/$USER \
 
 RUN if [ -d "/home/ubuntu" ]; then userdel -f ubuntu; fi \
     && groupadd --gid $PRIMARY_GROUP_ID $USER \
-    && adduser --system --uid $USER_ID --ingroup $USER $USER \
+    && useradd --system --uid $USER_ID --gid $PRIMARY_GROUP_ID -m $USER \
     && echo "$USER ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$USER \
     && chmod 0440 /etc/sudoers.d/$USER \
     && passwd -d $USER
