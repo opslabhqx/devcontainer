@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1@sha256:865e5dd094beca432e8c0a1d5e1c465db5f998dca4e439981029b3b81fb39ed5
 
 # renovate: datasource=docker depName=opslabhq/ubuntu
-ARG BASE_VERSION=jammy@sha256:8c83c14285cd0502eb72ded73ac9902081a60b13d3c8f7c1d608d6442540c1ca
+ARG BASE_VERSION=jammy@sha256:1c6c2453d1ff33b3e02c1fecefa0ebc5c759ad689bfaa66256c16253dc64ca16
 
 FROM opslabhq/ubuntu:${BASE_VERSION:-latest} AS base
 
