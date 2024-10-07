@@ -6,7 +6,7 @@ on:
     branches:
       - main
     paths:
-      - 'images/ubuntu-node/**'
+      - 'src/images/ubuntu-node/**'
   workflow_dispatch:
 
 env:
