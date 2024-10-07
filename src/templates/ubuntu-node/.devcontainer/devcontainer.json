@@ -1,0 +1,20 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/opslabhqx/devcontainer/tree/main/src/ubuntu-node
+{
+  "name": "ubuntu-node",
+  "dockerComposeFile": [
+    "./docker-compose.devcontainer.yml"
+  ],
+  "service": "ubuntu-node",
+  "remoteUser": "vscode",
+  "shutdownAction": "stopCompose",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash" // default shell
+      },
+    "extensions": []
+    }
+  },
+  "workspaceFolder": "/home/vscode/ubuntu-node"
+}
