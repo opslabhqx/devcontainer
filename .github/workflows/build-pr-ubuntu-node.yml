@@ -34,4 +34,4 @@ jobs:
         uses: docker/bake-action@2e3d19baedb14545e5d41222653874f25d5b4dfb # v5
         with:
           targets: test
-          workdir: ./images/ubuntu-node
+          workdir: ./src/images/ubuntu-node
