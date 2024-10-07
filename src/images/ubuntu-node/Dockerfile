@@ -16,22 +16,13 @@ RUN case `uname -m` in \
     && echo $ARCH > /tmp/ARCH \
     && cat /tmp/ARCH
 
-# renovate: datasource=github-tags depName=nodejs/node
-ARG IMAGE_VERSION=v22.9.0
-
-RUN export ARCH=$(cat /tmp/ARCH) \
-    && apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get install -y --no-install-recommends sudo git curl ca-certificates \
-    && curl -fsSL https://nodejs.org/dist/$IMAGE_VERSION/node-$IMAGE_VERSION-linux-$ARCH.tar.gz | tar -xzvf - --strip-components=1 -C /usr/local \
-    && npm install -g pnpm
-
-RUN git config --system --add safe.directory '*'
-
-FROM base AS final
+RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+    && apt-get install -y --no-install-recommends sudo passwd git curl ca-certificates
 
 ARG USER=vscode
 ARG USER_ID=1000
 ARG PRIMARY_GROUP_ID=1000
+ARG HOME=/home/$USER
 ENV HOME=/home/$USER \
     SHELL=/bin/bash
 
@@ -40,5 +31,16 @@ RUN addgroup --gid $PRIMARY_GROUP_ID $USER \
     && echo "$USER ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$USER \
     && chmod 0440 /etc/sudoers.d/$USER \
     && passwd -d $USER
+
+# renovate: datasource=github-tags depName=nodejs/node
+ARG IMAGE_VERSION=v22.9.0
+
+RUN export ARCH=$(cat /tmp/ARCH) \
+    && curl -fsSL https://nodejs.org/dist/$IMAGE_VERSION/node-$IMAGE_VERSION-linux-$ARCH.tar.gz | tar -xzvf - --strip-components=1 -C /usr/local \
+    && npm install -g pnpm
+
+RUN git config --system --add safe.directory '*'
+
+FROM base AS final
 
 USER root
