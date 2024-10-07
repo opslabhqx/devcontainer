@@ -7,7 +7,7 @@ on:
     branches:
       - main
     paths:
-      - 'images/ubuntu-base/**'
+      - 'src/images/ubuntu-base/**'
     types:
       - opened
       - synchronize
