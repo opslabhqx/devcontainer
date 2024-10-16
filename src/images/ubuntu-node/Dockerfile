@@ -34,7 +34,7 @@ RUN if [ -d "/home/ubuntu" ]; then userdel -f ubuntu; fi \
     && passwd -d $USER
 
 # renovate: datasource=github-tags depName=nodejs/node
-ARG IMAGE_VERSION=v22.9.0
+ARG IMAGE_VERSION=v22.10.0
 
 RUN export ARCH=$(cat /tmp/ARCH) \
     && curl -fsSL https://nodejs.org/dist/$IMAGE_VERSION/node-$IMAGE_VERSION-linux-$ARCH.tar.gz | tar -xzvf - --strip-components=1 -C /usr/local \
